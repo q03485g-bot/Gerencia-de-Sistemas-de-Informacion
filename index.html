@@ -105,6 +105,11 @@
             overflow-y: auto; /* Permite scroll dentro de la ventana si hay mucho contenido */
         }
 
+        /* ESTILOS NUEVOS PARA EL SCROLL (Barra lateral derecha) */
+        .main-stage::-webkit-scrollbar { width: 8px; }
+        .main-stage::-webkit-scrollbar-track { background: var(--bg-deep); }
+        .main-stage::-webkit-scrollbar-thumb { background: var(--tech-cyan); border-radius: 4px; }
+
         .slide-title {
             font-family: 'Orbitron', sans-serif;
             font-size: 36px;
@@ -161,8 +166,41 @@
             overflow: hidden;
             box-shadow: 0 0 15px rgba(0, 242, 255, 0.1);
             margin-bottom: 20px;
+            background: #000;
         }
-        .media-frame img, .media-frame iframe { width: 100%; display: block; border: none; }
+        .media-frame img, .media-frame iframe { width: 100%; display: block; border: none; min-height: 250px; }
+
+        /* ========= NUEVOS ESTILOS PARA LAS SEMANAS ========= */
+        .week-card {
+            background: var(--bg-card);
+            border: 1px solid #1e293b;
+            padding: 25px;
+            border-radius: 12px;
+            position: relative;
+            transition: 0.3s;
+            z-index: 2;
+            margin-bottom: 30px;
+        }
+        .week-card:hover { border-color: var(--tech-cyan); box-shadow: 0 0 15px rgba(0, 242, 255, 0.1); }
+        .week-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--tech-cyan); border-radius: 12px 0 0 12px; }
+
+        .summary-box {
+            background: rgba(204, 255, 0, 0.05);
+            border-left: 3px solid var(--tech-lime);
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 20px;
+        }
+        .summary-box p { color: var(--tech-lime); margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 14px; }
+
+        .video-text {
+            color: #fff;
+            font-size: 14px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
     </style>
 </head>
 <body>
@@ -186,7 +224,7 @@
             </div>
             
             <div class="media-frame" style="position: absolute; right: 50px; bottom: 50px; width: 350px;">
-                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=600&auto=format&fit=crop" alt="Portada">
+                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=600&auto=format&fit=crop" style="object-fit: cover; min-height: auto; height: 100%;" alt="Portada">
             </div>
         </div>
     </div>
@@ -196,14 +234,13 @@
             <div class="sidebar-brand"><i class="fa-solid fa-user-gear"></i> USER_PROFILE</div>
             <div class="nav-item" onclick="cambiarVentana('ventana-inicio')"><i class="fa-solid fa-house"></i> Inicio</div>
             <div class="nav-item active" onclick="cambiarVentana('ventana-perfil')"><i class="fa-solid fa-user"></i> Sobre Mí</div>
-            <div class="nav-item" onclick="cambiarVentana('ventana-unidad1')"><i class="fa-solid fa-cloud"></i> Unidades...</div>
         </div>
         <div class="main-stage">
             <h2 class="slide-title">Perfil del Estudiante</h2>
             <div style="display: flex; gap: 40px; align-items: flex-start; position: relative; z-index: 2;">
                 <div style="flex: 0 0 300px;">
                     <div class="media-frame">
-                        <img src="perfle.jpeg" alt="Mi Foto de perfil">
+                        <img src="perfle.jpeg" alt="Mi Foto de perfil" style="object-fit: cover;">
                     </div>
                 </div>
                 <div style="flex: 1;">
@@ -228,18 +265,67 @@
         </div>
         <div class="main-stage">
             <h2 class="slide-title">Unidad I: Administración en la Nube</h2>
-            <div class="tiled-grid">
-                <div class="tech-card">
-                    <h3>Semana 1-2: Fundamentos</h3>
-                    <p>Sistemas de Información (SI), tipos y componentes. Modelos de Despliegue en Computación en la nube.</p>
-                    <p style="color: var(--tech-lime); font-size: 14px;">[Escribe aquí tu resumen de la semana 1 y 2]</p>
+            
+            <div class="week-card">
+                <h3>Semana 01: La información en la empresa</h3>
+                <p><strong>Desarrollo del tema:</strong> Sistemas de Información (SI), tipos de sistemas de información y los componentes principales que los estructuran en una empresa.</p>
+                <div class="summary-box">
+                    <p>RESUMEN: [Ingresa aquí los apuntes y conclusiones principales que aprendiste esta semana...]</p>
                 </div>
-                <div class="tech-card">
-                    <h3>Semana 3-4: Infraestructura TI</h3>
-                    <p>Administración en la nube (Funciones y Tecnología). Tipos y componentes de infraestructura de TI.</p>
-                    <p style="color: var(--tech-lime); font-size: 14px;">[Escribe aquí tu resumen de la semana 3 y 4]</p>
+                <div class="video-text">
+                    <i class="fa-brands fa-youtube" style="color: #ff0000; font-size: 18px;"></i> 
+                    <strong>Por si no entendiste, aquí te lo explican detalladamente:</strong>
+                </div>
+                <div class="media-frame">
+                    <iframe src="https://www.youtube.com/embed/TU_VIDEO_AQUI" allowfullscreen></iframe>
                 </div>
             </div>
+
+            <div class="week-card">
+                <h3>Semana 02: Computación en la nube</h3>
+                <p><strong>Desarrollo del tema:</strong> Conceptos de computación en la nube y los diferentes Modelos de Despliegue (Nube pública, privada e híbrida).</p>
+                <div class="summary-box">
+                    <p>RESUMEN: [Ingresa aquí los apuntes y conclusiones principales que aprendiste esta semana...]</p>
+                </div>
+                <div class="video-text">
+                    <i class="fa-brands fa-youtube" style="color: #ff0000; font-size: 18px;"></i> 
+                    <strong>Por si no entendiste, aquí te lo explican detalladamente:</strong>
+                </div>
+                <div class="media-frame">
+                    <iframe src="https://www.youtube.com/embed/TU_VIDEO_AQUI" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="week-card">
+                <h3>Semana 03: Administración en la nube</h3>
+                <p><strong>Desarrollo del tema:</strong> Funciones específicas y tecnología aplicada en la administración de recursos dentro de los entornos Cloud.</p>
+                <div class="summary-box">
+                    <p>RESUMEN: [Ingresa aquí los apuntes y conclusiones principales que aprendiste esta semana...]</p>
+                </div>
+                <div class="video-text">
+                    <i class="fa-brands fa-youtube" style="color: #ff0000; font-size: 18px;"></i> 
+                    <strong>Por si no entendiste, aquí te lo explican detalladamente:</strong>
+                </div>
+                <div class="media-frame">
+                    <iframe src="https://www.youtube.com/embed/TU_VIDEO_AQUI" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="week-card">
+                <h3>Semana 04: Infraestructura de TI</h3>
+                <p><strong>Desarrollo del tema:</strong> Modelos de despliegue de TI, componentes críticos y los diversos tipos de infraestructura que soportan los sistemas actuales.</p>
+                <div class="summary-box">
+                    <p>RESUMEN: [Ingresa aquí los apuntes y conclusiones principales que aprendiste esta semana...]</p>
+                </div>
+                <div class="video-text">
+                    <i class="fa-brands fa-youtube" style="color: #ff0000; font-size: 18px;"></i> 
+                    <strong>Por si no entendiste, aquí te lo explican detalladamente:</strong>
+                </div>
+                <div class="media-frame">
+                    <iframe src="https://www.youtube.com/embed/TU_VIDEO_AQUI" allowfullscreen></iframe>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -251,19 +337,39 @@
         </div>
         <div class="main-stage">
             <h2 class="slide-title">Unidad II: Aplicaciones Empresariales</h2>
-            <div class="tech-card" style="margin-bottom: 20px;">
-                <h3>Semanas 5 al 8</h3>
-                <p>Inteligencia de negocios, SIG, Aplicaciones EAS (CRM, SCM, ERP) y Nube híbrida.</p>
-            </div>
             
-            <div class="tech-card">
-                <h4 style="font-family: 'Orbitron'; color: var(--tech-cyan); margin-bottom: 15px;">
-                    <i class="fa-solid fa-play"></i> Video Resumen de la Unidad
-                </h4>
-                <div class="media-frame">
-                    <iframe height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY" allowfullscreen></iframe>
-                </div>
+            <div class="week-card">
+                <h3>Semana 05: SI en los negocios</h3>
+                <p><strong>Desarrollo del tema:</strong> Fundamentos de inteligencia de negocios: bases de datos y administración de la información estructurada y no estructurada.</p>
+                <div class="summary-box"><p>RESUMEN: [Tu resumen aquí...]</p></div>
+                <div class="video-text"><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> <strong>Por si no entendiste, aquí te lo explican detalladamente:</strong></div>
+                <div class="media-frame"><iframe src="https://www.youtube.com/embed/TU_VIDEO_AQUI" allowfullscreen></iframe></div>
             </div>
+
+            <div class="week-card">
+                <h3>Semana 06: Diseño de Estructura Informática</h3>
+                <p><strong>Desarrollo del tema:</strong> Diseño de la Estructura Informática Integral de los Sistemas de Información Gerencial (Tres Planos: EPS).</p>
+                <div class="summary-box"><p>RESUMEN: [Tu resumen aquí...]</p></div>
+                <div class="video-text"><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> <strong>Por si no entendiste, aquí te lo explican detalladamente:</strong></div>
+                <div class="media-frame"><iframe src="https://www.youtube.com/embed/TU_VIDEO_AQUI" allowfullscreen></iframe></div>
+            </div>
+
+            <div class="week-card">
+                <h3>Semana 07: Aplicaciones EAS</h3>
+                <p><strong>Desarrollo del tema:</strong> Usos comunes de aplicaciones empresariales. Tipos de sistemas: CRM (Clientes), SCM (Cadena de Suministro), ERP (Recursos) y SIG.</p>
+                <div class="summary-box"><p>RESUMEN: [Tu resumen aquí...]</p></div>
+                <div class="video-text"><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> <strong>Por si no entendiste, aquí te lo explican detalladamente:</strong></div>
+                <div class="media-frame"><iframe src="https://www.youtube.com/embed/TU_VIDEO_AQUI" allowfullscreen></iframe></div>
+            </div>
+
+            <div class="week-card">
+                <h3>Semana 08: Gestión de Nube Híbrida</h3>
+                <p><strong>Desarrollo del tema:</strong> Software de nube híbrida para un negocio más inteligente. Evaluación Parcial (Consolidado I y II).</p>
+                <div class="summary-box"><p>RESUMEN: [Tu resumen aquí...]</p></div>
+                <div class="video-text"><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> <strong>Por si no entendiste, aquí te lo explican detalladamente:</strong></div>
+                <div class="media-frame"><iframe src="https://www.youtube.com/embed/TU_VIDEO_AQUI" allowfullscreen></iframe></div>
+            </div>
+
         </div>
     </div>
 
@@ -274,18 +380,38 @@
             <div class="nav-item active"><i class="fa-solid fa-sitemap"></i> Infraestructura TI</div>
         </div>
         <div class="main-stage">
-            <h2 class="slide-title">Unidad III: Infraestructura de TI</h2>
-            <div class="tiled-grid">
-                <div class="tech-card">
-                    <h3>Semana 9-10</h3>
-                    <p>Gobierno de TI: Alineamiento estratégico y creación de valor. Gestión de servicios (Estrategia).</p>
-                    <p style="color: var(--tech-lime); font-size: 14px;">[Tu resumen aquí...]</p>
-                </div>
-                <div class="tech-card">
-                    <h3>Semana 11-12</h3>
-                    <p>Diseño y transición. Gestión del cambio, conocimiento, eventos, incidencias y problemas. Centro de servicio.</p>
-                    <p style="color: var(--tech-lime); font-size: 14px;">[Tu resumen aquí...]</p>
-                </div>
+            <h2 class="slide-title">Unidad III: Infraestructura y Gobierno TI</h2>
+            
+            <div class="week-card">
+                <h3>Semana 09: Gobierno de TI</h3>
+                <p><strong>Desarrollo del tema:</strong> Alineamiento estratégico de TI con los objetivos de la empresa, creación de valor y gestión de procesos.</p>
+                <div class="summary-box"><p>RESUMEN: [Tu resumen aquí...]</p></div>
+                <div class="video-text"><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> <strong>Por si no entendiste, aquí te lo explican detalladamente:</strong></div>
+                <div class="media-frame"><iframe src="https://www.youtube.com/embed/TU_VIDEO_AQUI" allowfullscreen></iframe></div>
+            </div>
+
+            <div class="week-card">
+                <h3>Semana 10: Gestión de Servicios</h3>
+                <p><strong>Desarrollo del tema:</strong> Fundamentos de la estrategia del servicio (Alineado con ITIL).</p>
+                <div class="summary-box"><p>RESUMEN: [Tu resumen aquí...]</p></div>
+                <div class="video-text"><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> <strong>Por si no entendiste, aquí te lo explican detalladamente:</strong></div>
+                <div class="media-frame"><iframe src="https://www.youtube.com/embed/TU_VIDEO_AQUI" allowfullscreen></iframe></div>
+            </div>
+
+            <div class="week-card">
+                <h3>Semana 11: Diseño y Transición</h3>
+                <p><strong>Desarrollo del tema:</strong> Fases de diseño del servicio y la correcta transición para su paso a producción.</p>
+                <div class="summary-box"><p>RESUMEN: [Tu resumen aquí...]</p></div>
+                <div class="video-text"><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> <strong>Por si no entendiste, aquí te lo explican detalladamente:</strong></div>
+                <div class="media-frame"><iframe src="https://www.youtube.com/embed/TU_VIDEO_AQUI" allowfullscreen></iframe></div>
+            </div>
+            
+            <div class="week-card">
+                <h3>Semana 12: Gestión de Operaciones</h3>
+                <p><strong>Desarrollo del tema:</strong> Gestión del cambio, conocimiento, eventos, incidencias y problemas. Operación del Centro de servicio (Service Desk).</p>
+                <div class="summary-box"><p>RESUMEN: [Tu resumen aquí...]</p></div>
+                <div class="video-text"><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> <strong>Por si no entendiste, aquí te lo explican detalladamente:</strong></div>
+                <div class="media-frame"><iframe src="https://www.youtube.com/embed/TU_VIDEO_AQUI" allowfullscreen></iframe></div>
             </div>
         </div>
     </div>
@@ -298,14 +424,27 @@
         </div>
         <div class="main-stage">
             <h2 class="slide-title">Unidad IV: Desarrollo de Sistemas</h2>
-            <div class="tech-card" style="margin-bottom: 20px;">
-                <h3>Semanas 13, 14 y 15</h3>
-                <p>Ciclo de vida, Metodología e Implementación de sistemas de información. Exposición del proyecto práctico en una empresa.</p>
-                <p style="color: var(--tech-lime); font-size: 14px;">[Anota aquí las conclusiones de tu Proyecto Práctico]</p>
+            
+            <div class="week-card">
+                <h3>Semana 13: Ciclo de vida</h3>
+                <p><strong>Desarrollo del tema:</strong> Metodología para el Desarrollo de Sistemas de Información (SDLC).</p>
+                <div class="summary-box"><p>RESUMEN: [Tu resumen aquí...]</p></div>
+                <div class="video-text"><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> <strong>Por si no entendiste, aquí te lo explican detalladamente:</strong></div>
+                <div class="media-frame"><iframe src="https://www.youtube.com/embed/TU_VIDEO_AQUI" allowfullscreen></iframe></div>
             </div>
-            <div class="tech-card">
-                <h3>Semana 16: Evaluación Final</h3>
-                <p>Reflexiones finales y consolidado del curso.</p>
+
+            <div class="week-card">
+                <h3>Semana 14: Implementación</h3>
+                <p><strong>Desarrollo del tema:</strong> Estrategias de implementación y despliegue de sistemas de información en la empresa.</p>
+                <div class="summary-box"><p>RESUMEN: [Tu resumen aquí...]</p></div>
+                <div class="video-text"><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> <strong>Por si no entendiste, aquí te lo explican detalladamente:</strong></div>
+                <div class="media-frame"><iframe src="https://www.youtube.com/embed/TU_VIDEO_AQUI" allowfullscreen></iframe></div>
+            </div>
+
+            <div class="week-card">
+                <h3>Semana 15 y 16: Proyecto Final</h3>
+                <p><strong>Desarrollo del tema:</strong> Exposición de un proyecto práctico de sistemas de información en una empresa. Evaluación Final del curso.</p>
+                <div class="summary-box"><p>RESUMEN: [Tu resumen del proyecto aquí...]</p></div>
             </div>
         </div>
     </div>
