@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
-        /* ESTILOS DEL DASHBOARD PROFESIONAL */
         :root {
             --bg-deep: #050a14;
             --bg-card: #0d1626;
@@ -31,10 +30,9 @@
             height: 100vh;
             font-family: 'Inter', sans-serif;
             color: var(--text-main);
-            overflow: hidden; /* Evita scroll en la ventana principal */
+            overflow: hidden;
         }
 
-        /* Contenedor principal (La "Ventana") */
         .slide-container {
             width: 1200px;
             height: 700px;
@@ -49,7 +47,6 @@
             transform: translate(-50%, -50%);
         }
 
-        /* Barra Lateral (Menú) */
         .sidebar {
             width: 260px;
             background: rgba(13, 22, 38, 0.8);
@@ -86,26 +83,16 @@
             cursor: pointer;
         }
 
-        .nav-item:hover {
-            background: rgba(0, 242, 255, 0.05);
-            color: #fff;
-        }
+        .nav-item:hover { background: rgba(0, 242, 255, 0.05); color: #fff; }
+        .nav-item.active { background: rgba(0, 242, 255, 0.1); color: var(--tech-cyan); border-color: var(--border-glow); }
 
-        .nav-item.active {
-            background: rgba(0, 242, 255, 0.1);
-            color: var(--tech-cyan);
-            border-color: var(--border-glow);
-        }
-
-        /* Contenido Central */
         .main-stage {
             flex: 1;
             padding: 50px;
             position: relative;
-            overflow-y: auto; /* Permite scroll dentro de la ventana si hay mucho contenido */
+            overflow-y: auto;
         }
 
-        /* ESTILOS PARA EL SCROLL */
         .main-stage::-webkit-scrollbar { width: 8px; }
         .main-stage::-webkit-scrollbar-track { background: var(--bg-deep); }
         .main-stage::-webkit-scrollbar-thumb { background: var(--tech-cyan); border-radius: 4px; }
@@ -120,16 +107,6 @@
             padding-left: 20px;
         }
 
-        h3 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 20px;
-            color: var(--tech-cyan);
-            margin-bottom: 10px;
-        }
-
-        p, li { font-size: 16px; line-height: 1.6; color: var(--text-dim); margin-bottom: 15px; }
-
-        /* Elementos Decorativos */
         .cyber-grid {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background-image: linear-gradient(rgba(0, 242, 255, 0.03) 1px, transparent 1px),
@@ -137,85 +114,73 @@
             background-size: 40px 40px; z-index: 1; pointer-events: none;
         }
 
-        .tech-card {
-            background: var(--bg-card);
-            border: 1px solid #1e293b;
-            padding: 20px;
-            border-radius: 12px;
-            position: relative;
-            transition: 0.3s;
-            z-index: 2;
-        }
-
-        .tech-card:hover { border-color: var(--tech-cyan); box-shadow: 0 0 15px rgba(0, 242, 255, 0.1); }
-        .tech-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--tech-cyan); }
-
-        .icon-box {
-            width: 40px; height: 40px; background: rgba(0, 242, 255, 0.1);
-            border-radius: 8px; display: flex; align-items: center; justify-content: center;
-            color: var(--tech-cyan); font-size: 18px; margin-bottom: 15px;
-        }
-
-        /* Marcos para Imágenes y Videos */
         .media-frame {
             width: 100%;
             border-radius: 12px;
             border: 1px solid var(--tech-cyan);
             overflow: hidden;
-            box-shadow: 0 0 15px rgba(0, 242, 255, 0.1);
             margin-bottom: 20px;
             background: #000;
         }
-        .media-frame img, .media-frame iframe { width: 100%; display: block; border: none; min-height: 250px; }
+        .media-frame iframe { width: 100%; height: 300px; border: none; }
+        .media-frame img { width: 100%; display: block; }
 
-        /* ESTILOS PARA LAS SEMANAS */
         .week-card {
             background: var(--bg-card);
             border: 1px solid #1e293b;
             padding: 25px;
             border-radius: 12px;
             position: relative;
-            transition: 0.3s;
-            z-index: 2;
             margin-bottom: 30px;
+            z-index: 2;
         }
-        .week-card:hover { border-color: var(--tech-cyan); box-shadow: 0 0 15px rgba(0, 242, 255, 0.1); }
         .week-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--tech-cyan); border-radius: 12px 0 0 12px; }
 
-        /* NUEVO DISEÑO PARA EL RESUMEN GENERAL DE UNIDAD */
         .unit-summary-box {
             background: rgba(204, 255, 0, 0.05);
             border-left: 5px solid var(--tech-lime);
-            padding: 20px;
+            padding: 25px;
             border-radius: 8px;
             margin-bottom: 40px;
-            position: relative;
             z-index: 2;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-        .unit-summary-box h4 {
-            color: var(--tech-lime);
-            font-family: 'Orbitron', sans-serif;
-            font-size: 18px;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .unit-summary-box p {
-            color: var(--text-main);
-            margin: 0;
-            font-size: 15px;
+            position: relative;
         }
 
-        .video-text {
-            color: #fff;
-            font-size: 14px;
-            margin-bottom: 10px;
-            display: flex;
+        /* ESTILOS DE BOTONES DE DESCARGA */
+        .btn-download {
+            display: inline-flex;
             align-items: center;
-            gap: 8px;
-            margin-top: 15px;
+            gap: 10px;
+            background: transparent;
+            color: var(--tech-cyan);
+            border: 1px solid var(--tech-cyan);
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+        .btn-download:hover {
+            background: var(--tech-cyan);
+            color: var(--bg-deep);
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.4);
+        }
+
+        .btn-unit-download {
+            background: var(--tech-lime);
+            color: #000;
+            padding: 12px 24px;
+            font-weight: bold;
+            font-family: 'Orbitron';
+            margin-top: 20px;
+            border: none;
+        }
+        .btn-unit-download:hover {
+            background: #fff;
+            color: #000;
+            box-shadow: 0 0 20px rgba(204, 255, 0, 0.4);
         }
     </style>
 </head>
@@ -228,47 +193,12 @@
             <div class="nav-item" onclick="cambiarVentana('ventana-perfil')"><i class="fa-solid fa-user"></i> Sobre Mí</div>
             <div class="nav-item" onclick="cambiarVentana('ventana-unidad1')"><i class="fa-solid fa-cloud"></i> Unidad I</div>
             <div class="nav-item" onclick="cambiarVentana('ventana-unidad2')"><i class="fa-solid fa-chart-line"></i> Unidad II</div>
-            <div class="nav-item" onclick="cambiarVentana('ventana-unidad3')"><i class="fa-solid fa-server"></i> Unidad III</div>
-            <div class="nav-item" onclick="cambiarVentana('ventana-unidad4')"><i class="fa-solid fa-code"></i> Unidad IV</div>
         </div>
         <div class="main-stage">
             <div class="cyber-grid"></div>
             <div style="z-index: 2; position: relative; margin-top: 10%;">
-                <p style="color: var(--tech-cyan); font-family: 'JetBrains Mono'; margin-bottom: 10px;">> ACCESSING_SYLLABUS_V2026.1</p>
-                <h1 style="font-family: 'Orbitron'; font-size: 55px; line-height: 1.2; margin-bottom: 20px;">GERENCIA DE <br><span style="color: var(--tech-cyan)">SISTEMAS</span> DE INFORMACIÓN</h1>
-                <p style="max-width: 600px; font-size: 18px;">Repositorio interactivo. Estrategia, Infraestructura y Gobernanza en el Ecosistema Digital Moderno.</p>
-            </div>
-            
-            <div class="media-frame" style="position: absolute; right: 50px; bottom: 50px; width: 350px;">
-                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=600&auto=format&fit=crop" style="object-fit: cover; min-height: auto; height: 100%;" alt="Portada">
-            </div>
-        </div>
-    </div>
-
-    <div class="slide-container" id="ventana-perfil" style="display: none;">
-        <div class="sidebar">
-            <div class="sidebar-brand"><i class="fa-solid fa-user-gear"></i> USER_PROFILE</div>
-            <div class="nav-item" onclick="cambiarVentana('ventana-inicio')"><i class="fa-solid fa-house"></i> Inicio</div>
-            <div class="nav-item active" onclick="cambiarVentana('ventana-perfil')"><i class="fa-solid fa-user"></i> Sobre Mí</div>
-        </div>
-        <div class="main-stage">
-            <h2 class="slide-title">Perfil del Estudiante</h2>
-            <div style="display: flex; gap: 40px; align-items: flex-start; position: relative; z-index: 2;">
-                <div style="flex: 0 0 300px;">
-                    <div class="media-frame">
-                        <img src="perfle.jpeg" alt="Mi Foto de perfil" style="object-fit: cover;">
-                    </div>
-                </div>
-                <div style="flex: 1;">
-                    <h3>Richard Gamboa Fernandez</h3>
-                    <p>Estudiante de Ingeniería de Sistemas y Computación. Este repositorio es mi bitácora personal donde documento mi aprendizaje a lo largo del curso de Gerencia de Sistemas de Información.</p>
-                    <div class="tech-card">
-                        <div class="icon-box"><i class="fa-brands fa-github"></i></div>
-                        <h4 style="font-family: 'Orbitron'; color: #fff;">Contacto</h4>
-                        <p style="font-size: 14px;">Email: q03485g@upla.edu.pe</p>
-                        <p style="font-size: 14px;">WhatsApp: 991748202</p>
-                    </div>
-                </div>
+                <h1 style="font-family: 'Orbitron'; font-size: 50px;">GERENCIA DE <br><span style="color: var(--tech-cyan)">SISTEMAS</span></h1>
+                <p>Bienvenido a tu repositorio de materiales y aprendizaje.</p>
             </div>
         </div>
     </div>
@@ -276,206 +206,48 @@
     <div class="slide-container" id="ventana-unidad1" style="display: none;">
         <div class="sidebar">
             <div class="sidebar-brand"><i class="fa-solid fa-cloud"></i> UNIDAD I</div>
-            <div class="nav-item" onclick="cambiarVentana('ventana-inicio')"><i class="fa-solid fa-arrow-left"></i> Volver al Menú</div>
-            <div class="nav-item active"><i class="fa-solid fa-server"></i> Admin. Nube</div>
+            <div class="nav-item" onclick="cambiarVentana('ventana-inicio')"><i class="fa-solid fa-arrow-left"></i> Volver</div>
         </div>
         <div class="main-stage">
             <h2 class="slide-title">Unidad I: Administración en la Nube</h2>
             
             <div class="unit-summary-box">
-                <h4><i class="fa-solid fa-book-journal-whills"></i> Resumen General de la Unidad I</h4>
-                <p>[Ingresa aquí tus apuntes principales, conclusiones globales y el resumen de todos los temas abarcados en esta primera unidad sobre la Nube y los Sistemas de Información...]</p>
+                <h4 style="color:var(--tech-lime); font-family:'Orbitron';"><i class="fa-solid fa-file-pdf"></i> MATERIAL COMPLETO UNIDAD I</h4>
+                <p>Descarga aquí todas las diapositivas de la unidad unificadas en un solo archivo.</p>
+                <a href="TU_LINK_DE_DRIVE_AQUI" target="_blank" class="btn-download btn-unit-download">
+                    <i class="fa-solid fa-download"></i> DESCARGAR UNIDAD I (.PDF)
+                </a>
             </div>
             
             <div class="week-card">
                 <h3>Semana 01: La información en la empresa</h3>
-                <p><strong>Desarrollo del tema:</strong> Sistemas de Información (SI), tipos de sistemas de información y los componentes principales que los estructuran en una empresa.</p>
-                <div class="video-text">
-                    <i class="fa-brands fa-youtube" style="color: #ff0000; font-size: 18px;"></i> 
-                    <strong>Por si no entendiste, aquí te lo explican detalladamente:</strong>
-                </div>
-                <div class="media-frame">
-                    <iframe src="https://www.youtube.com/embed/TU_VIDEO_AQUI" allowfullscreen></iframe>
+                <p>Sistemas de Información (SI) y componentes principales.</p>
+                <a href="TU_LINK_SEMANA_1" target="_blank" class="btn-download">
+                    <i class="fa-solid fa-file-pdf"></i> PPT Semana 1 (PDF)
+                </a>
+                <div class="media-frame" style="margin-top:20px;">
+                    <iframe src="https://www.youtube.com/embed/TU_ID_VIDEO" allowfullscreen></iframe>
                 </div>
             </div>
 
             <div class="week-card">
                 <h3>Semana 02: Computación en la nube</h3>
-                <p><strong>Desarrollo del tema:</strong> Conceptos de computación en la nube y los diferentes Modelos de Despliegue (Nube pública, privada e híbrida).</p>
-                <div class="video-text">
-                    <i class="fa-brands fa-youtube" style="color: #ff0000; font-size: 18px;"></i> 
-                    <strong>Por si no entendiste, aquí te lo explican detalladamente:</strong>
+                <p>Modelos de despliegue (Pública, Privada e Híbrida).</p>
+                <a href="TU_LINK_SEMANA_2" target="_blank" class="btn-download">
+                    <i class="fa-solid fa-file-pdf"></i> PPT Semana 2 (PDF)
+                </a>
+                <div class="media-frame" style="margin-top:20px;">
+                    <iframe src="https://www.youtube.com/embed/TU_ID_VIDEO" allowfullscreen></iframe>
                 </div>
-                <div class="media-frame">
-                    <iframe src="https://www.youtube.com/embed/TU_VIDEO_AQUI" allowfullscreen></iframe>
-                </div>
-            </div>
-
-            <div class="week-card">
-                <h3>Semana 03: Administración en la nube</h3>
-                <p><strong>Desarrollo del tema:</strong> Funciones específicas y tecnología aplicada en la administración de recursos dentro de los entornos Cloud.</p>
-                <div class="video-text">
-                    <i class="fa-brands fa-youtube" style="color: #ff0000; font-size: 18px;"></i> 
-                    <strong>Por si no entendiste, aquí te lo explican detalladamente:</strong>
-                </div>
-                <div class="media-frame">
-                    <iframe src="https://www.youtube.com/embed/TU_VIDEO_AQUI" allowfullscreen></iframe>
-                </div>
-            </div>
-
-            <div class="week-card">
-                <h3>Semana 04: Infraestructura de TI</h3>
-                <p><strong>Desarrollo del tema:</strong> Modelos de despliegue de TI, componentes críticos y los diversos tipos de infraestructura que soportan los sistemas actuales.</p>
-                <div class="video-text">
-                    <i class="fa-brands fa-youtube" style="color: #ff0000; font-size: 18px;"></i> 
-                    <strong>Por si no entendiste, aquí te lo explican detalladamente:</strong>
-                </div>
-                <div class="media-frame">
-                    <iframe src="https://www.youtube.com/embed/TU_VIDEO_AQUI" allowfullscreen></iframe>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <div class="slide-container" id="ventana-unidad2" style="display: none;">
-        <div class="sidebar">
-            <div class="sidebar-brand"><i class="fa-solid fa-briefcase"></i> UNIDAD II</div>
-            <div class="nav-item" onclick="cambiarVentana('ventana-inicio')"><i class="fa-solid fa-arrow-left"></i> Volver al Menú</div>
-            <div class="nav-item active"><i class="fa-solid fa-briefcase"></i> Aplicaciones EAS</div>
-        </div>
-        <div class="main-stage">
-            <h2 class="slide-title">Unidad II: Aplicaciones Empresariales</h2>
-            
-            <div class="unit-summary-box">
-                <h4><i class="fa-solid fa-book-journal-whills"></i> Resumen General de la Unidad II</h4>
-                <p>[Ingresa aquí tus apuntes principales, conclusiones globales y el resumen sobre las Aplicaciones Empresariales, Inteligencia de Negocios, CRM, ERP...]</p>
-            </div>
-
-            <div class="week-card">
-                <h3>Semana 05: SI en los negocios</h3>
-                <p><strong>Desarrollo del tema:</strong> Fundamentos de inteligencia de negocios: bases de datos y administración de la información estructurada y no estructurada.</p>
-                <div class="video-text"><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> <strong>Por si no entendiste, aquí te lo explican detalladamente:</strong></div>
-                <div class="media-frame"><iframe src="https://www.youtube.com/embed/TU_VIDEO_AQUI" allowfullscreen></iframe></div>
-            </div>
-
-            <div class="week-card">
-                <h3>Semana 06: Diseño de Estructura Informática</h3>
-                <p><strong>Desarrollo del tema:</strong> Diseño de la Estructura Informática Integral de los Sistemas de Información Gerencial (Tres Planos: EPS).</p>
-                <div class="video-text"><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> <strong>Por si no entendiste, aquí te lo explican detalladamente:</strong></div>
-                <div class="media-frame"><iframe src="https://www.youtube.com/embed/TU_VIDEO_AQUI" allowfullscreen></iframe></div>
-            </div>
-
-            <div class="week-card">
-                <h3>Semana 07: Aplicaciones EAS</h3>
-                <p><strong>Desarrollo del tema:</strong> Usos comunes de aplicaciones empresariales. Tipos de sistemas: CRM (Clientes), SCM (Cadena de Suministro), ERP (Recursos) y SIG.</p>
-                <div class="video-text"><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> <strong>Por si no entendiste, aquí te lo explican detalladamente:</strong></div>
-                <div class="media-frame"><iframe src="https://www.youtube.com/embed/TU_VIDEO_AQUI" allowfullscreen></iframe></div>
-            </div>
-
-            <div class="week-card">
-                <h3>Semana 08: Gestión de Nube Híbrida</h3>
-                <p><strong>Desarrollo del tema:</strong> Software de nube híbrida para un negocio más inteligente. Evaluación Parcial (Consolidado I y II).</p>
-                <div class="video-text"><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> <strong>Por si no entendiste, aquí te lo explican detalladamente:</strong></div>
-                <div class="media-frame"><iframe src="https://www.youtube.com/embed/TU_VIDEO_AQUI" allowfullscreen></iframe></div>
-            </div>
-
-        </div>
-    </div>
-
-    <div class="slide-container" id="ventana-unidad3" style="display: none;">
-        <div class="sidebar">
-            <div class="sidebar-brand"><i class="fa-solid fa-scale-balanced"></i> UNIDAD III</div>
-            <div class="nav-item" onclick="cambiarVentana('ventana-inicio')"><i class="fa-solid fa-arrow-left"></i> Volver al Menú</div>
-            <div class="nav-item active"><i class="fa-solid fa-sitemap"></i> Infraestructura TI</div>
-        </div>
-        <div class="main-stage">
-            <h2 class="slide-title">Unidad III: Infraestructura y Gobierno TI</h2>
-            
-            <div class="unit-summary-box">
-                <h4><i class="fa-solid fa-book-journal-whills"></i> Resumen General de la Unidad III</h4>
-                <p>[Ingresa aquí tus apuntes principales, conclusiones globales y el resumen sobre el Gobierno de TI, Gestión de Servicios (ITIL) y Operaciones...]</p>
-            </div>
-
-            <div class="week-card">
-                <h3>Semana 09: Gobierno de TI</h3>
-                <p><strong>Desarrollo del tema:</strong> Alineamiento estratégico de TI con los objetivos de la empresa, creación de valor y gestión de procesos.</p>
-                <div class="video-text"><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> <strong>Por si no entendiste, aquí te lo explican detalladamente:</strong></div>
-                <div class="media-frame"><iframe src="https://www.youtube.com/embed/TU_VIDEO_AQUI" allowfullscreen></iframe></div>
-            </div>
-
-            <div class="week-card">
-                <h3>Semana 10: Gestión de Servicios</h3>
-                <p><strong>Desarrollo del tema:</strong> Fundamentos de la estrategia del servicio (Alineado con ITIL).</p>
-                <div class="video-text"><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> <strong>Por si no entendiste, aquí te lo explican detalladamente:</strong></div>
-                <div class="media-frame"><iframe src="https://www.youtube.com/embed/TU_VIDEO_AQUI" allowfullscreen></iframe></div>
-            </div>
-
-            <div class="week-card">
-                <h3>Semana 11: Diseño y Transición</h3>
-                <p><strong>Desarrollo del tema:</strong> Fases de diseño del servicio y la correcta transición para su paso a producción.</p>
-                <div class="video-text"><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> <strong>Por si no entendiste, aquí te lo explican detalladamente:</strong></div>
-                <div class="media-frame"><iframe src="https://www.youtube.com/embed/TU_VIDEO_AQUI" allowfullscreen></iframe></div>
-            </div>
-            
-            <div class="week-card">
-                <h3>Semana 12: Gestión de Operaciones</h3>
-                <p><strong>Desarrollo del tema:</strong> Gestión del cambio, conocimiento, eventos, incidencias y problemas. Operación del Centro de servicio (Service Desk).</p>
-                <div class="video-text"><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> <strong>Por si no entendiste, aquí te lo explican detalladamente:</strong></div>
-                <div class="media-frame"><iframe src="https://www.youtube.com/embed/TU_VIDEO_AQUI" allowfullscreen></iframe></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="slide-container" id="ventana-unidad4" style="display: none;">
-        <div class="sidebar">
-            <div class="sidebar-brand"><i class="fa-solid fa-code"></i> UNIDAD IV</div>
-            <div class="nav-item" onclick="cambiarVentana('ventana-inicio')"><i class="fa-solid fa-arrow-left"></i> Volver al Menú</div>
-            <div class="nav-item active"><i class="fa-solid fa-rocket"></i> Desarrollo SI</div>
-        </div>
-        <div class="main-stage">
-            <h2 class="slide-title">Unidad IV: Desarrollo de Sistemas</h2>
-            
-            <div class="unit-summary-box">
-                <h4><i class="fa-solid fa-book-journal-whills"></i> Resumen General de la Unidad IV</h4>
-                <p>[Ingresa aquí tus apuntes principales, conclusiones globales y el resumen sobre el Ciclo de Vida del Software (SDLC) y la Implementación de Proyectos...]</p>
-            </div>
-
-            <div class="week-card">
-                <h3>Semana 13: Ciclo de vida</h3>
-                <p><strong>Desarrollo del tema:</strong> Metodología para el Desarrollo de Sistemas de Información (SDLC).</p>
-                <div class="video-text"><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> <strong>Por si no entendiste, aquí te lo explican detalladamente:</strong></div>
-                <div class="media-frame"><iframe src="https://www.youtube.com/embed/TU_VIDEO_AQUI" allowfullscreen></iframe></div>
-            </div>
-
-            <div class="week-card">
-                <h3>Semana 14: Implementación</h3>
-                <p><strong>Desarrollo del tema:</strong> Estrategias de implementación y despliegue de sistemas de información en la empresa.</p>
-                <div class="video-text"><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> <strong>Por si no entendiste, aquí te lo explican detalladamente:</strong></div>
-                <div class="media-frame"><iframe src="https://www.youtube.com/embed/TU_VIDEO_AQUI" allowfullscreen></iframe></div>
-            </div>
-
-            <div class="week-card">
-                <h3>Semana 15 y 16: Proyecto Final</h3>
-                <p><strong>Desarrollo del tema:</strong> Exposición de un proyecto práctico de sistemas de información en una empresa. Evaluación Final del curso.</p>
             </div>
         </div>
     </div>
 
     <script>
-        function cambiarVentana(idVentanaDestino) {
-            // 1. Seleccionamos todas las ventanas
-            const ventanas = document.querySelectorAll('.slide-container');
-            
-            // 2. Ocultamos todas
-            ventanas.forEach(ventana => {
-                ventana.style.display = 'none';
-            });
-            
-            // 3. Mostramos solo la ventana que el usuario pidió
-            document.getElementById(idVentanaDestino).style.display = 'flex';
+        function cambiarVentana(id) {
+            document.querySelectorAll('.slide-container').forEach(v => v.style.display = 'none');
+            document.getElementById(id).style.display = 'flex';
         }
     </script>
-
 </body>
 </html>
